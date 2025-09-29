@@ -6,12 +6,11 @@ This repository contains assignments for five Python modules.
 
 ```
 python_assignments/
-├── module1/          # Module 1 assignments
-├── module2/          # Module 2 assignments
-├── module3/          # Module 3 assignments
-├── module4/          # Module 4 assignments
-├── module5/          # Module 5 assignments
-├── tests/            # Test files for all modules
+├── module1/          # Linked Lists assignments
+├── module2/          # Stack & Queue assignments
+├── module3/          # Hashtable assignments
+├── module4/          # Tree assignments
+├── module5/          # Heap assignments
 ├── requirements.txt  # Project dependencies
 └── README.md         # This file
 ```
@@ -19,6 +18,7 @@ python_assignments/
 ## Setup
 
 1. Create and activate virtual environment:
+
    ```bash
    python -m venv .venv
    source .venv/bin/activate  # On macOS/Linux
@@ -32,13 +32,17 @@ python_assignments/
 ## Running Tests
 
 ```bash
-python -m pytest tests/
+python -m pytest module1/test_module1
+python -m pytest module2/test_module2
+python -m pytest module3/test_module3
+python -m pytest module4/test_module4
+python -m pytest module5/test_module5
 ```
 
-## Modules
+## Description
 
-- **Module 1**: [Add description]
-- **Module 2**: [Add description]
-- **Module 3**: [Add description]
-- **Module 4**: [Add description]
-- **Module 5**: [Add description]
+- **Module 1**: [Description](./module1/description.md)
+- **Module 2**: [Description](./module2/description.md)
+- **Module 3**: [Description](./module3/description.md)
+- **Module 4**: [Description](./module4/description.md)
+- **Module 5**: [Description](./module5/description.md)
