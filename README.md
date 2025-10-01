@@ -29,7 +29,7 @@ python_assignments/
    pip install -r requirements.txt
    ```
 
-## Run
+## Playground
 
 ```bash
 python -m module1.main
