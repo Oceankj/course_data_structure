@@ -9,11 +9,11 @@ class TestBank:
     def test_bank_initialization(self):
         """Test that Bank initializes correctly with empty linked list"""
         bank = Bank()
-        assert bank.size == 0
-        assert bank.head.next == bank.tail
-        assert bank.tail.prev == bank.head
-        assert bank.head.prev is None
-        assert bank.tail.next is None
+        assert bank.list.size == 0
+        assert bank.list.head.next == bank.list.tail
+        assert bank.list.tail.prev == bank.list.head
+        assert bank.list.head.prev is None
+        assert bank.list.tail.next is None
 
     def test_user_node_creation(self):
         """Test UserNode creation with and without parameters"""
@@ -41,9 +41,9 @@ class TestTask1:
         bank.add_user("User2", "Address2", "222-22-2222", 200.0)
         bank.add_user("User3", "Address3", "333-33-3333", 300.0)
 
-        current = bank.head
+        current = bank.list.head
         user_ids = []
-        while current.next != bank.tail:
+        while current.next != bank.list.tail:
             current = current.next
             user_ids.append(current.id)
 
@@ -57,11 +57,11 @@ class TestTask2:
         bank.add_user("John Doe", "123 Main St", "123-45-6789", 1000.0)
 
         # Check that size increased
-        assert bank.size == 1
+        assert bank.list.size == 1
 
         # Check that user was added after head
-        first_user = bank.head.next
-        assert first_user != bank.tail
+        first_user = bank.list.head.next
+        assert first_user != bank.list.tail
         assert first_user.id == 0
         assert first_user.account.name == "John Doe"
         assert first_user.account.address == "123 Main St"
@@ -74,15 +74,15 @@ class TestTask2:
 
         # Add first user
         bank.add_user("Alice", "123 Oak St", "111-11-1111", 500.0)
-        assert bank.size == 1
-        assert bank.head.next.id == 0
+        assert bank.list.size == 1
+        assert bank.list.head.next.id == 0
 
         # Add second user
         bank.add_user("Bob", "456 Pine St", "222-22-2222", 750.0)
-        assert bank.size == 2
+        assert bank.list.size == 2
 
         # Check that users are in the correct order
-        first_user = bank.head.next
+        first_user = bank.list.head.next
         second_user = first_user.next
         assert first_user.id == 0
         assert second_user.id == 1
@@ -98,16 +98,16 @@ class TestTask3:
         id0 = bank.add_user("User0", "Addr0", "000-00-0000", 100.0)
         id1 = bank.add_user("User1", "Addr1", "111-11-1111", 200.0)
         id2 = bank.add_user("User2", "Addr2", "222-22-2222", 300.0)
-        assert bank.size == 3
+        assert bank.list.size == 3
 
         # Delete middle user
         is_success = bank.delete_user(id1)
         assert is_success is True
-        assert bank.size == 2
+        assert bank.list.size == 2
         # Check that id1 is no longer in the list
         ids = []
-        current = bank.head.next
-        while current != bank.tail:
+        current = bank.list.head.next
+        while current != bank.list.tail:
             ids.append(current.id)
             current = current.next
         assert ids == [0, 2]
@@ -115,10 +115,10 @@ class TestTask3:
         # Delete head user
         is_success = bank.delete_user(id0)
         assert is_success is True
-        assert bank.size == 1
+        assert bank.list.size == 1
         ids = []
-        current = bank.head.next
-        while current != bank.tail:
+        current = bank.list.head.next
+        while current != bank.list.tail:
             ids.append(current.id)
             current = current.next
         assert ids == [2]
@@ -126,10 +126,10 @@ class TestTask3:
         # Delete last user
         is_success = bank.delete_user(id2)
         assert is_success is True
-        assert bank.size == 0
+        assert bank.list.size == 0
         # List should be empty (head.next is tail)
-        assert bank.head.next == bank.tail
-        assert bank.tail.prev == bank.head
+        assert bank.list.head.next == bank.list.tail
+        assert bank.list.tail.prev == bank.list.head
 
         # Try deleting a non-existent user
         is_success = bank.delete_user(999)
@@ -225,7 +225,7 @@ class TestTask4:
         is_success = bank.payUserToUser(payer_id, payee_id, 0)
         assert is_success is False
 
-        payer_node = bank.head.next
+        payer_node = bank.list.head.next
         payee_node = payer_node.next
         assert payer_node.account.balance == 100.0
         assert payee_node.account.balance == 200.0
@@ -277,11 +277,11 @@ class TestTask6:
         bank = Bank()
         id1 = bank.add_user("John Doe", "123 Main St", "111-11-1111", 100.0)
         id2 = bank.add_user("John Doe", "123 Main St", "111-11-1111", 200.0)
-        assert bank.size == 2
+        assert bank.list.size == 2
 
         is_success = bank.merge_accounts(id1, id2)
         assert is_success is True
-        assert bank.size == 1
+        assert bank.list.size == 1
 
         account = bank.get_user_account(min(id1, id2))
         assert account.balance == 300.0
@@ -291,11 +291,11 @@ class TestTask6:
         bank = Bank()
         id1 = bank.add_user("Alice", "Addr1", "111-11-1111", 100.0)
         id2 = bank.add_user("Bob", "Addr2", "222-22-2222", 200.0)
-        assert bank.size == 2
+        assert bank.list.size == 2
 
         is_success = bank.merge_accounts(id1, id2)
         assert is_success is False
-        assert bank.size == 2
+        assert bank.list.size == 2
 
     def test_merge_accounts_invalid_id(self):
         """Test merging with an invalid id returns False"""
@@ -323,19 +323,19 @@ class TestTask7:
         merged_bank = Bank.merge_banks(bank1, bank2)
 
         # The merged bank should have 4 users
-        assert merged_bank.size == 4
+        assert merged_bank.list.size == 4
 
         ids = []
-        curr = merged_bank.head.next
-        while curr is not None and curr != merged_bank.tail:
+        curr = merged_bank.list.head.next
+        while curr is not None and curr != merged_bank.list.tail:
             ids.append(curr.id)
             curr = curr.next
         assert sorted(ids) == [0, 1, 2, 3]
 
         # Check that all user data is present
         names = []
-        curr = merged_bank.head.next
-        while curr is not None and curr != merged_bank.tail:
+        curr = merged_bank.list.head.next
+        while curr is not None and curr != merged_bank.list.tail:
             if curr.account is not None:
                 names.append(curr.account.name)
             curr = curr.next
@@ -343,8 +343,8 @@ class TestTask7:
 
         # Check balances
         balances = []
-        curr = merged_bank.head.next
-        while curr is not None and curr != merged_bank.tail:
+        curr = merged_bank.list.head.next
+        while curr is not None and curr != merged_bank.list.tail:
             if curr.account is not None:
                 balances.append(curr.account.balance)
             curr = curr.next
@@ -357,7 +357,7 @@ class TestTask7:
         bank2.add_user("Eve", "Addr5", "555-55-5555", 500.0)
 
         merged_bank = Bank.merge_banks(bank1, bank2)
-        assert merged_bank.size == 1
+        assert merged_bank.list.size == 1
         account = merged_bank.get_user_account(0)
         assert account.name == "Eve"
         assert account.balance == 500.0
@@ -367,6 +367,75 @@ class TestTask7:
         bank1 = Bank()
         bank2 = Bank()
         merged_bank = Bank.merge_banks(bank1, bank2)
-        assert merged_bank.size == 0
+        assert merged_bank.list.size == 0
         with pytest.raises(ValueError):
             merged_bank.get_median_id()
+
+    def test_merge_not_sequence_banks(self):
+        bank1 = Bank()
+        bank2 = Bank()
+
+        bank1.add_user("Anna", "AddrA", "111-11-1111", 100.0)  # id 0
+        delete_id_a = bank1.add_user(
+            "Ben", "AddrB", "222-22-2222", 200.0
+        )  # id 1
+        bank1.add_user("Cara", "AddrC", "333-33-3333", 300.0)  # id 2
+        delete_id_b = bank1.add_user(
+            "Dan", "AddrD", "444-44-4444", 400.0
+        )  # id 3
+
+        # Delete Ben (id 1) and Dan (id 3) to create gaps
+        bank1.delete_user(delete_id_a)
+        bank1.delete_user(delete_id_b)
+        # Now bank1 has users with ids 0 (Anna) and 2 (Cara)
+
+        # Add users to bank2 with overlapping and new users
+        bank2.add_user("Eli", "AddrE", "555-55-5555", 500.0)  # id 0
+        bank2.add_user(
+            "Anna", "AddrA", "111-11-1111", 150.0
+        )  # id 1 (same as Anna in bank1, but different id)
+        bank2.add_user(
+            "Cara", "AddrC", "333-33-3333", 350.0
+        )  # id 2 (same as Cara in bank1, same id)
+        bank2.add_user("Fay", "AddrF", "666-66-6666", 600.0)  # id 3
+
+        # Now, merge the banks
+        merged_bank = Bank.merge_banks(bank1, bank2)
+
+        # Collect all user ids and names in merged bank
+        ids = []
+        names = []
+        balances = []
+        curr = merged_bank.list.head.next
+        while curr is not None and curr != merged_bank.list.tail:
+            ids.append(curr.id)
+            if curr.account is not None:
+                names.append(curr.account.name)
+                balances.append(curr.account.balance)
+            curr = curr.next
+
+        # There should be 5 users
+        assert merged_bank.list.size == 6
+        assert ids == [0, 1, 2, 3, 4, 5]
+
+        # Check names and balances by id
+        id_to_name = dict(zip(ids, names))
+        id_to_balance = dict(zip(ids, balances))
+
+        assert id_to_name[0] == "Anna"
+        assert id_to_balance[0] == 100.0
+
+        assert id_to_name[1] == "Anna"
+        assert id_to_balance[1] == 150.0
+
+        assert id_to_name[2] == "Cara"
+        assert id_to_balance[2] == 300.0
+
+        assert id_to_name[3] == "Fay"
+        assert id_to_balance[3] == 600.0
+
+        assert id_to_name[4] == "Eli"
+        assert id_to_balance[4] == 500.0
+
+        assert id_to_name[5] == "Cara"
+        assert id_to_balance[5] == 350.0
