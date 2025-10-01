@@ -29,6 +29,12 @@ python_assignments/
    pip install -r requirements.txt
    ```
 
+## Run
+
+```bash
+python -m module1.main
+```
+
 ## Running Tests
 
 ```bash
