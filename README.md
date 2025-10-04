@@ -29,12 +29,6 @@ python_assignments/
    pip install -r requirements.txt
    ```
 
-## Playground
-
-```bash
-python -m module1.main
-```
-
 ## Running Tests
 
 ```bash
@@ -44,6 +38,15 @@ python -m pytest module3/test_module3
 python -m pytest module4/test_module4
 python -m pytest module5/test_module5
 ```
+
+## Playground
+
+```bash
+python -m module1.main
+python -m module2.main
+
+```
+
 
 ## Description
 
