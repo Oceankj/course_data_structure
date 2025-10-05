@@ -1,7 +1,7 @@
 # Assignment 2: Stack & Queue
 Task Description: Complete the following tasks. 
 
-***Also, write sample test cases to validate your implementation for each task.
+**Also, write sample test cases to validate your implementation for each task.**
 
 ## Task-1: 
 

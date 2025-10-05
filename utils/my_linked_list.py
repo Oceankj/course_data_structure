@@ -20,12 +20,25 @@ class MyLinkedList:
 
     def add_before(self, node: MyNode, new_node: MyNode):
         if node.prev is None:
-            raise ValueError("node.prev is None")
+            raise ValueError("cannot insert before head")
         node.prev.next = new_node
         new_node.prev = node.prev
         new_node.next = node
         node.prev = new_node
         self.__size += 1
+
+    def add_after(self, node: MyNode, new_node: MyNode):
+        if node.next is None:
+            raise ValueError("cannot insert after tail")
+        node.next.prev = new_node
+        new_node.next = node.next
+        new_node.prev = node
+        node.next = new_node
+        self.__size += 1
+
+    def add_first(self, value: Any):
+        new_node = MyNode[Any](value)
+        self.add_after(self.__head, new_node)
 
     def add_last(self, value: Any):
         new_node = MyNode[Any](value)
@@ -44,6 +57,11 @@ class MyLinkedList:
         if self.is_empty():
             raise ValueError("list is empty")
         return self.__tail.prev
+
+    def get_first_node(self) -> MyNode:
+        if self.is_empty():
+            raise ValueError("list is empty")
+        return self.__head.next
 
     def size(self):
         return self.__size
