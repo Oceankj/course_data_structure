@@ -56,25 +56,24 @@ class TestTask1:
 
 class TestTask2:
     def setup_method(self, method):
-        # to be used by each test to auto-track temp files
         self.temp_files = []
-
-    def create_temp_file(self, content, filename):
-        module3_path = os.path.dirname(os.path.abspath(__file__))
-        filepath = os.path.join(module3_path, "..", filename)
-        with open(filepath, "w", encoding="utf-8") as f:
-            f.write(content)
-        self.temp_files.append(filepath)
 
     def teardown_method(self, method):
         for fpath in getattr(self, "temp_files", []):
             if os.path.exists(fpath):
                 os.remove(fpath)
 
+    def __create_temp_file(self, content, filename):
+        module3_path = os.path.dirname(os.path.abspath(__file__))
+        filepath = os.path.join(module3_path, "..", filename)
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(content)
+        self.temp_files.append(filepath)
+
     def test_read_and_parse_case_sensitivity(self, capsys):
         sample_txt = "Dog dog DOG dOg DoG\n" "House house HOuSe\n"
         filename = "test_sample_case.txt"
-        self.create_temp_file(sample_txt, filename)
+        self.__create_temp_file(sample_txt, filename)
 
         read_and_parse(filename)
         captured = capsys.readouterr().out
@@ -85,7 +84,7 @@ class TestTask2:
     def test_read_and_parse_numbers(self, capsys):
         sample_txt = "123 321 213 \n" "456 654 546 123\n"
         filename = "test_sample_numbers.txt"
-        self.create_temp_file(sample_txt, filename)
+        self.__create_temp_file(sample_txt, filename)
 
         read_and_parse(filename)
         captured = capsys.readouterr().out
@@ -101,7 +100,7 @@ class TestTask2:
             "Dog God god."
         )
         filename = "test_sample_anagrams.txt"
-        self.create_temp_file(sample_txt, filename)
+        self.__create_temp_file(sample_txt, filename)
 
         read_and_parse(filename)
         captured = capsys.readouterr().out
