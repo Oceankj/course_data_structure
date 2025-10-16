@@ -44,6 +44,8 @@ python -m pytest module5/test_module5
 ```bash
 python -m module1.main
 python -m module2.main
+python -m module3.main
+python -m module4.main
 
 ```
 
