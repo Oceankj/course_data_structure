@@ -157,4 +157,3 @@ class BST:
                 queue.append(node.left)
                 queue.append(node.right)
                 file.write(node.data["raw_data"] + "\n")
- 
