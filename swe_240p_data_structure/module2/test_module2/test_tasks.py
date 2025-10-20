@@ -1,10 +1,10 @@
 from math import nan
 import pytest
 
-from module2.queue import Queue
-from module2.calculator import calculator
-from module2.stack import Stack
-from module2.stack_with_two_qs import StackWithTwoQs
+from ..queue import Queue
+from ..calculator import calculator
+from ..stack import Stack
+from ..stack_with_two_qs import StackWithTwoQs
 
 
 class TestTask1:

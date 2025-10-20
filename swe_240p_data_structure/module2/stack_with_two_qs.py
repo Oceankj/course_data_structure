@@ -1,5 +1,5 @@
 from typing import Any
-from module2.queue import Queue
+from .queue import Queue
 
 
 class StackWithTwoQs:

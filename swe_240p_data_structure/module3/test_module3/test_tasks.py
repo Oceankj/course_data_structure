@@ -1,8 +1,10 @@
 import pytest
 import os
 
-from module3.read_and_parse import read_and_parse
-from module3.hash_data_structure import HashDataStructure
+from ..read_and_parse import read_and_parse
+from ..hash_data_structure import (
+    HashDataStructure,
+)
 
 
 class TestTask1:

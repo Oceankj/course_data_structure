@@ -1,6 +1,8 @@
 import os
 import pytest
-from module4.BST import BST
+from swe_240p_data_structure.module4.BST import BST
+
+TEST_FILE_PATH = os.path.dirname(__file__)
 
 
 class TestTask1:
@@ -66,7 +68,7 @@ class TestTask1:
 
 class TestTask2:
     def setup_method(self):
-        self.tree_file = "module4/tree_input.txt"
+        self.tree_file = TEST_FILE_PATH + "/tree_input.txt"
         self.bst = BST()
 
     def teardown_method(self):
@@ -81,7 +83,7 @@ class TestTask2:
     # It might be different if we implemented balance tree
     def test_in_order_traversal_output(self):
         self.bst.inOrderTraversal()
-        with open("module4/test_module4/inOrderTraversal.txt", "r") as f:
+        with open(TEST_FILE_PATH + "/inOrderTraversal.txt", "r") as f:
             expected_lines = [line.rstrip("\n") for line in f]
         with open("inOrderTraversal.txt", "r") as f:
             lines = [line.rstrip("\n") for line in f]
@@ -90,7 +92,7 @@ class TestTask2:
     # It might be different if we implemented balance tree
     def test_pre_order_traversal_output(self):
         self.bst.preOrderTraversal()
-        with open("module4/test_module4/preOrderTraversal.txt", "r") as f:
+        with open(TEST_FILE_PATH + "/preOrderTraversal.txt", "r") as f:
             expected_lines = [line.rstrip("\n") for line in f]
         with open("preOrderTraversal.txt", "r") as f:
             lines = [line.rstrip("\n") for line in f]
@@ -99,7 +101,7 @@ class TestTask2:
     # It might be different if we implemented balance tree
     def test_post_order_traversal_output(self):
         self.bst.postOrderTraversal()
-        with open("module4/test_module4/postOrderTraversal.txt", "r") as f:
+        with open(TEST_FILE_PATH + "/postOrderTraversal.txt", "r") as f:
             expected_lines = [line.rstrip("\n") for line in f]
         with open("postOrderTraversal.txt", "r") as f:
             lines = [line.rstrip("\n") for line in f]
@@ -108,7 +110,7 @@ class TestTask2:
 
 class TestTask3:
     def setup_method(self):
-        self.tree_file = "module4/tree_input.txt"
+        self.tree_file = TEST_FILE_PATH + "/tree_input.txt"
         self.bst = BST()
 
     def teardown_method(self):
@@ -121,7 +123,7 @@ class TestTask3:
     # It might be different if we implemented balance tree
     def test_level_order_traversal_output(self):
         self.bst.levelOrderTraversal()
-        with open("module4/test_module4/levelOrderTraversal.txt", "r") as f:
+        with open(TEST_FILE_PATH + "/levelOrderTraversal.txt", "r") as f:
             expected_lines = [line.rstrip("\n") for line in f]
         with open("levelOrderTraversal.txt", "r") as f:
             lines = [line.rstrip("\n") for line in f]

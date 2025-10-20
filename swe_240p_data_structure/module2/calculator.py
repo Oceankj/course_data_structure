@@ -1,5 +1,5 @@
 from math import nan
-from module2.stack import Stack
+from .stack import Stack
 
 
 def calculator(input: str):

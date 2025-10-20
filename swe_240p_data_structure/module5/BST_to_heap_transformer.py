@@ -1,5 +1,5 @@
 from typing import Callable, Optional
-from module4.BST import Node
+from swe_240p_data_structure.module4.BST import Node
 
 
 class BSTToHeapTransformer:

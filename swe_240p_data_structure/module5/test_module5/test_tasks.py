@@ -1,9 +1,11 @@
 from typing import Optional
 
 import pytest
-from module4.BST import BST
-from module5.BST_to_heap_transformer import BSTToHeapTransformer
-from module5.heap_builder import HeapBuilder, Node
+from swe_240p_data_structure.module4.BST import BST
+from swe_240p_data_structure.module5.BST_to_heap_transformer import (
+    BSTToHeapTransformer,
+)
+from swe_240p_data_structure.module5.heap_builder import HeapBuilder, Node
 
 
 class TestTask1:

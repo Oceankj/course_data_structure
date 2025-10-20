@@ -1,7 +1,7 @@
 import os
 import re
 
-from module3.hash_data_structure import HashDataStructure
+from .hash_data_structure import HashDataStructure
 
 module3_path = os.path.dirname(os.path.abspath(__file__))
 
