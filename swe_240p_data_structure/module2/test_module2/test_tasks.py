@@ -130,6 +130,14 @@ class TestTask2:
         expr = "1 + 2 - 3 + 4 - 5 + 6 * 2 / 3"
         assert calculator(expr) == 3
 
+    def test_operactor_in_the_start(self):
+        with pytest.raises(ValueError):
+            calculator("* 1 + 2 - 3 + 4 - 5 + 6 * 2 / 3")
+
+    def test_operactor_in_the_end(self):
+        with pytest.raises(ValueError):
+            calculator("1 + 2 - 3 + 4 - 5 + 6 * 2 / 3 %")
+
 
 class TestTask3:
     @pytest.fixture(autouse=True)

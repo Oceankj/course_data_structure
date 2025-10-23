@@ -1,4 +1,5 @@
-class Solution:
+# Task 2
+class MatrixSearch:
     def solution(self, matrix: list[list[int]], target: int) -> bool:
         m = len(matrix)
         n = len(matrix[0])

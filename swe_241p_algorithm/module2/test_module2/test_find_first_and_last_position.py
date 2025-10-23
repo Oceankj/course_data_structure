@@ -1,11 +1,13 @@
 import pytest
-from swe_241p_algorithm.module2.task1 import Solution
+from swe_241p_algorithm.module2.find_first_and_last_position import (
+    FindFirstAndLastPosition,
+)
 
 
-class TestTask1:
+class TestFindFirstAndLastPosition:
     @pytest.fixture(autouse=True)
     def setUp(self):
-        self.sol = Solution()
+        self.sol = FindFirstAndLastPosition()
 
     def test_example1(self):
         nums = [4, 9, 10, 13, 17, 17, 19, 21]

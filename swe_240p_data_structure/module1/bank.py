@@ -244,8 +244,6 @@ class Bank:
             curr1 = curr1.next
 
         while curr2 is not None and curr2.next is not None:
-            if curr2.account is None:
-                raise ValueError("curr2.account is None")
             append_new(curr2)
             curr2 = curr2.next
 

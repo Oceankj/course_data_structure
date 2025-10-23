@@ -32,20 +32,21 @@ python_assignments/
 ## Running Tests
 
 ```bash
-python -m pytest module1/test_module1
-python -m pytest module2/test_module2
-python -m pytest module3/test_module3
-python -m pytest module4/test_module4
-python -m pytest module5/test_module5
+python -m pytest swe_240p_data_structure/module1/test_module1
+python -m pytest swe_240p_data_structure/module2/test_module2
+python -m pytest swe_240p_data_structure/module3/test_module3
+python -m pytest swe_240p_data_structure/module4/test_module4
+python -m pytest swe_240p_data_structure/module5/test_module5
 ```
 
 ## Playground
 
 ```bash
-python -m module1.main
-python -m module2.main
-python -m module3.main
-python -m module4.main
+python -m swe_240p_data_structure/module1.main
+python -m swe_240p_data_structure/module2.main
+python -m swe_240p_data_structure/module3.main
+python -m swe_240p_data_structure/module4.main
+python -m swe_240p_data_structure/module5.main
 
 ```
 

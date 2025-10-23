@@ -1,4 +1,5 @@
-class Solution:
+# Task1
+class FindFirstAndLastPosition:
 
     def solution(self, input: list[int], target: int) -> list[int]:
         if len(input) == 0:
