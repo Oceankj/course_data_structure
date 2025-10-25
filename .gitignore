@@ -17,3 +17,5 @@ build/
 .mypy_cache
 
 .DS_Store
+
+*.zip
